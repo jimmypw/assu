@@ -1,7 +1,6 @@
 #include <unistd.h>
 #include <string.h>
 #include <stdlib.h>
-#include <stdio.h>
 
 char *concatenate(size_t size, char *array[size], const char *joint){
     size_t jlen, lens[size];
@@ -26,18 +25,18 @@ char *concatenate(size_t size, char *array[size], const char *joint){
 }
 
 int main(int argc, char * argv[]) {
-	char **newargv = &argv[1];
-	int newargc = argc - 1;
-	char *command = NULL;
-
-	command = concatenate(newargc, newargv, " ");
-
-	seteuid(0);
-	setuid(0);
-	system(command);
-	
-	memset(command, 0, strlen(command));
-	free(command);
-	command = NULL;
+    char **newargv = &argv[1];
+    int newargc = argc - 1;
+    char *command = NULL;
+    
+    command = concatenate(newargc, newargv, " ");
+    
+    seteuid(0);
+    setuid(0);
+    system(command);
+    
+    memset(command, 0, strlen(command));
+    free(command);
+    command = NULL;
 }
 
